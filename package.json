@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "yarn@1.22.19",
   "workspaces": [
+    "demo",
     "docs",
     "packages/*"
   ],
