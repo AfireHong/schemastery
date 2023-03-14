@@ -5,6 +5,7 @@ import React, { useMemo } from 'react'
 import { Button } from 'tdesign-react'
 import { MoreIcon } from 'tdesign-icons-react'
 import { Primitive } from './primitive'
+import { Union } from './union'
 
 export interface ItemProps {
   label: string
@@ -22,12 +23,18 @@ export function Item(props: ItemProps) {
     () => ['string', 'number', 'boolean'].includes(schema.type),
     [schema.type]
   )
+  const isUnion = useMemo(
+    () => schema.type === 'union',
+    [schema.type]
+  )
   const shouldWrap = useMemo(
     () => ['textarea'].includes(schema.meta.role),
     [schema.meta.role]
   )
-  const controler = isPrimitive
+  const controller = isPrimitive
     ? <Primitive schema={schema} />
+    : isUnion
+    ? <Union schema={schema}/>
     : <></>
   return <div className={
     'schemastery-item' + (shouldWrap ? ' wrap' : '')
@@ -46,7 +53,7 @@ export function Item(props: ItemProps) {
       </div>}
     </div>
     <div className='schemastery-item__control'>
-      {React.cloneElement(controler, {
+      {React.cloneElement(controller, {
         defaultValue: schema.meta.default,
         disabled: props.disabled ?? false,
       })}
