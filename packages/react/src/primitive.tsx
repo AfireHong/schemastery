@@ -5,14 +5,15 @@ import { useState } from 'react'
 
 export interface PrimitiveProps {
   schema: SCHEMASTERY
-  value: any
+  value?: any
+  defaultValue?: any
 }
 
 export function Primitive({
   schema,
   ...rest
 }: PrimitiveProps) {
-  const [value, setValue] = useState(rest.value)
+  const [value, setValue] = useState(rest.defaultValue || rest.value)
   const props = {
     ...rest,
     value,
