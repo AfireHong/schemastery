@@ -1,21 +1,30 @@
 import SCHEMASTERY from 'schemastery'
-import { Input, InputNumber, Textarea } from 'tdesign-react/esm'
+import { Input, InputAdornment, InputNumber, Textarea } from 'tdesign-react/esm'
+import { LinkIcon } from 'tdesign-icons-react'
+import { useState } from 'react'
 
 export interface PrimitiveProps {
   schema: SCHEMASTERY
+  value: any
 }
 
 export function Primitive({
   schema,
   ...rest
 }: PrimitiveProps) {
+  const [value, setValue] = useState(rest.value)
+  const props = {
+    ...rest,
+    value,
+    onChange: setValue
+  }
   switch (schema.type) {
     case 'number':
       return <InputNumber
         style={{
           width: '100%'
         }}
-        {...rest}
+        {...props}
       />
     case 'string':
       if (schema.meta.role === 'textarea')
@@ -23,10 +32,31 @@ export function Primitive({
           autosize={{
             minRows: 1,
           }}
-          {...rest}
+          {...props}
         />
-      else
-        return <Input {...rest}/>
+      if (schema.meta.role === 'link')
+        return <InputAdornment
+          append={<div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 32,
+              height: 32,
+              fontSize: 20,
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+              if (!value)
+                return
+
+              window.open(value, '_blank')
+            }}
+          ><LinkIcon /></div>}
+        >
+          <Input {...props}/>
+        </InputAdornment>
+      return <Input {...props}/>
   }
   return <></>
 }

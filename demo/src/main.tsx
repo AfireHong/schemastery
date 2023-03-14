@@ -14,7 +14,10 @@ ReactDOM
         bar: Schemastery.string().description('这是一段介绍'),
         ber: Schemastery.string()
           .role('textarea')
-          .description('这是一段介绍')
+          .description('这是一段介绍'),
+        bur: Schemastery.string()
+          .role('link')
+          .description('跳转链接')
       })} />
     </React.StrictMode>,
   )
