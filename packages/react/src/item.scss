@@ -7,12 +7,16 @@
   padding: 10px 20px 10px 50px;
   width: calc(100% - 70px);
   border-bottom: 1px solid var(--td-border-level-1-color);
+  transition: .3s;
   &.wrap {
     align-items: start;
     flex-direction: column;
     .schemastery-item__control {
       width: 100%;
     }
+  }
+  &:hover {
+    background-color: var(--td-bg-color-container-hover);
   }
   &__more {
     position: absolute;
