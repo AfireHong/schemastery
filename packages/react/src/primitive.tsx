@@ -1,12 +1,9 @@
-import SCHEMASTERY from 'schemastery'
 import { Input, InputAdornment, InputNumber, Textarea } from 'tdesign-react/esm'
 import { LinkIcon } from 'tdesign-icons-react'
 import { useState } from 'react'
+import { ControllerProps } from './controller'
 
-export interface PrimitiveProps {
-  schema: SCHEMASTERY
-  value?: any
-  defaultValue?: any
+export interface PrimitiveProps extends ControllerProps {
 }
 
 export function Primitive({
