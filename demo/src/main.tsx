@@ -11,6 +11,12 @@ ReactDOM
       <Schema model={Schemastery.object({
         foo: Schemastery.number(),
         fuu: Schemastery.number().default(10),
+        fuo: Schemastery.union(['foo', 'bar', 'qux']),
+        fue: Schemastery.union([
+          Schemastery.const('foo').description('Foo'),
+          Schemastery.const('bar').description('Bar'),
+          Schemastery.const('qux').description('Qux'),
+        ]),
         bar: Schemastery.string().description('这是一段介绍'),
         ber: Schemastery.string()
           .role('textarea')
