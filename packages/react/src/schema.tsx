@@ -20,7 +20,7 @@ export function Schema<T>(props: SchemaProps<T>) {
   return <>
     {Object.entries(model.dict).map(([key, value]) => <Item
       key={key}
-      label={key}
+      label={value.meta.label || key}
       schema={value}
       disabled={props.disabled}
     />)}

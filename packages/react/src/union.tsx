@@ -14,7 +14,7 @@ export interface Option {
 
 function resolveSchemaList(schemas: Schemastery[]): Option[] {
   return schemas.map(schema => ({
-    label: schema.meta.description || schema.value,
+    label: schema.meta.label || schema.meta.description || schema.value,
     title: schema.meta.description,
     value: schema.value,
   }))
