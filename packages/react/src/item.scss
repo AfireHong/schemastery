@@ -8,7 +8,7 @@
   width: calc(100% - 70px);
   border-bottom: 1px solid var(--td-border-level-1-color);
   transition: .3s;
-  &.wrap {
+  &.wrap:not(.nowrap) {
     align-items: start;
     flex-direction: column;
     .schemastery-item__control {

@@ -1,5 +1,9 @@
-.union {
-  > label {
+.schemastery-item.union {
+  &.radio-inline > .schemastery-item__control > div {
+    display: flex;
+    justify-content: space-between;
+  }
+  &.radio > .schemastery-item__control > div > label {
     width: 100%;
   }
 }
