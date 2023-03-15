@@ -22,7 +22,7 @@ export function Schema<T>(props: SchemaProps<T>) {
       key={key}
       label={value.meta.label || key}
       schema={value}
-      disabled={props.disabled}
+      disabled={disabled}
     />)}
   </>
 }
