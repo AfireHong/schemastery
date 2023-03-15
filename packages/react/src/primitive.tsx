@@ -2,9 +2,12 @@ import { Input, InputAdornment, InputNumber, Textarea } from 'tdesign-react/esm'
 import { LinkIcon } from 'tdesign-icons-react'
 import { useState } from 'react'
 import { ControllerProps } from './controller'
+import { NeedWrapRoles } from './configure'
 
 export interface PrimitiveProps extends ControllerProps {
 }
+
+NeedWrapRoles.push('textarea')
 
 export function Primitive({
   schema,
