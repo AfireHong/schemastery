@@ -1,6 +1,8 @@
+import './union.scss'
+
 import Schemastery from 'schemastery'
 import { useMemo } from 'react'
-import { Select, RadioGroup, Radio } from 'tdesign-react/esm'
+import { Select, RadioGroup } from 'tdesign-react/esm'
 import { ControllerProps } from './controller'
 
 export interface UnionProps extends ControllerProps {
@@ -25,16 +27,23 @@ export function Union({
   ...rest
 }: UnionProps) {
   const options = useMemo(() => resolveSchemaList(schema.list), [schema.list])
+  const props = {
+    className: 'union',
+    title: schema.meta.description,
+    ...rest
+  }
   switch (schema.meta.role ?? 'select') {
     case 'select':
       return <Select
         options={options}
-        {...rest}
+        {...props}
       />
     case 'radio':
-      return <RadioGroup>
-        {}
-      </RadioGroup>
+      return <RadioGroup
+        options={options}
+        {...props}
+      />
   }
-  return <></>
+  return <>
+  </>
 }

@@ -9,14 +9,19 @@ ReactDOM
   .render(
     <React.StrictMode>
       <Schema model={Schemastery.object({
-        foo: Schemastery.number(),
+        foo: Schemastery.number().label('Foo'),
         fuu: Schemastery.number().default(10),
         fuo: Schemastery.union(['foo', 'bar', 'qux']),
         fue: Schemastery.union([
-          Schemastery.const('foo').description('Foo'),
-          Schemastery.const('bar').description('Bar'),
-          Schemastery.const('qux').description('Qux'),
+          Schemastery.const('foo').label('Foo').description('这是 Foo'),
+          Schemastery.const('bar').label('Bar').description('这是 Bar'),
+          Schemastery.const('qux').label('Qux').description('这是 Qux'),
         ]),
+        fee: Schemastery.union([
+          Schemastery.const('foo').label('Foo').description('这是 Foo'),
+          Schemastery.const('bar').label('Bar').description('这是 Bar'),
+          Schemastery.const('qux').label('Qux').description('这是 Qux'),
+        ]).role('radio'),
         bar: Schemastery.string().description('这是一段介绍'),
         ber: Schemastery.string()
           .role('textarea')
